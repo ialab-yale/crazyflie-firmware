@@ -76,6 +76,7 @@
 #if CONFIG_ENABLE_CPX
   #include "cpxlink.h"
 #endif
+#include "onboard_ergodic_controller.h"
 
 /* Private variable */
 static bool selftestPassed;
@@ -337,6 +338,7 @@ void systemTask(void *arg)
 void systemStart()
 {
   xSemaphoreGive(canStartMutex);
+  onboard_ergodic_controller_init();
 #ifndef DEBUG
   watchdogInit();
 #endif
